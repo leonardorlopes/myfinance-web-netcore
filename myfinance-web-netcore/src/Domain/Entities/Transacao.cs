@@ -7,5 +7,6 @@ namespace myfinance_web_netcore.Domain.Entities
         public Decimal Valor { get; set; }
         public String? Historico { get; set; }
         public PlanoConta PlanoConta { get; set; }
+        public int PlanoContaId {get; set;}
     }
 }

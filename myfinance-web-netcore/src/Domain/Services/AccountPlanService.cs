@@ -5,51 +5,51 @@ using myfinance_web_netcore.Models;
 
 namespace myfinance_web_netcore.Domain.Services
 {
-    public class PlanoContaService : IPlanoContaService
+    public class AccountPlanService : IAccountPlanService
     {
         private readonly MyFinanceDbContext _dbContext;
 
-        public PlanoContaService(MyFinanceDbContext dbContext)
+        public AccountPlanService(MyFinanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public List<PlanoContaModel> GetAll()
+        public List<AccountPlanModel> GetAll()
         {
             var dbSet = _dbContext.PlanoConta;
-            List<PlanoContaModel> planoContaModelList = new List<PlanoContaModel>();
+            List<AccountPlanModel> accountPlanModelList = new List<AccountPlanModel>();
 
             foreach (var item in dbSet)
             {
-                planoContaModelList.Add(new PlanoContaModel
+                accountPlanModelList.Add(new AccountPlanModel
                 {
                     Id = item.Id,
-                    Descricao = item.Descricao,
-                    Tipo = item.Tipo
+                    Description = item.Descricao,
+                    Type = item.Tipo
                 });
             }
-            return planoContaModelList;
+            return accountPlanModelList;
         }
 
-        public PlanoContaModel Get(int id)
+        public AccountPlanModel Get(int id)
         {
             var dbSet = _dbContext.PlanoConta.Where(x => x.Id.Equals(id)).First();
-            return new PlanoContaModel
+            return new AccountPlanModel
             {
                 Id = dbSet.Id,
-                Descricao = dbSet.Descricao,
-                Tipo = dbSet.Tipo
+                Description = dbSet.Descricao,
+                Type = dbSet.Tipo
             };
         }
 
-        public void Save(PlanoContaModel planoContaModel)
+        public void Save(AccountPlanModel accountPlanModel)
         {
             var dbSet = _dbContext.PlanoConta;
             var entity = new PlanoConta()
             {
-                Id = planoContaModel.Id,
-                Descricao = planoContaModel.Descricao,
-                Tipo = planoContaModel.Tipo
+                Id = accountPlanModel.Id,
+                Descricao = accountPlanModel.Description,
+                Tipo = accountPlanModel.Type
             };
 
             if (entity.Id == null)
@@ -67,9 +67,9 @@ namespace myfinance_web_netcore.Domain.Services
 
         public void Delete(int id)
         {
-            var planoConta = Get(id);
-            _dbContext.Attach(planoConta);
-            _dbContext.Remove(planoConta);
+            var accountPlan = _dbContext.PlanoConta.Where(x => x.Id.Equals(id)).First();
+            _dbContext.Attach(accountPlan);
+            _dbContext.Remove(accountPlan);
             _dbContext.SaveChanges();
         }
     }

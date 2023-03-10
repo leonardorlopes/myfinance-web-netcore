@@ -5,13 +5,13 @@ using myfinance_web_netcore.Domain.Services.Interfaces;
 namespace myfinance_web_netcore.Controllers
 {
     [Route("[controller]")]
-    public class PlanoContaController : Controller
+    public class AccountPlanController : Controller
     {
-        private readonly ILogger<PlanoContaController> _logger;
-        private readonly IPlanoContaService _service;
+        private readonly ILogger<AccountPlanController> _logger;
+        private readonly IAccountPlanService _service;
 
-        public PlanoContaController(ILogger<PlanoContaController> logger,
-        IPlanoContaService service)
+        public AccountPlanController(ILogger<AccountPlanController> logger,
+        IAccountPlanService service)
         {
             _logger = logger;
             _service = service;
@@ -21,34 +21,34 @@ namespace myfinance_web_netcore.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            ViewBag.ListPlanoConta = _service.GetAll();
+            ViewBag.ListAccountPlan = _service.GetAll();
             return View();
         }
 
         [HttpGet]
-        [Route("Cadastro")]
-        [Route("Cadastro/{id}")]
-        public IActionResult Cadastro(int? id)
+        [Route("Register")]
+        [Route("Register/{id}")]
+        public IActionResult Register(int? id)
         {
             if (id != null)
             {
-                var planoConta = _service.Get((int)id);
-                return View(planoConta);
+                var accountPlan = _service.Get((int)id);
+                return View(accountPlan);
             }
             return View();
         }
 
         [HttpPost]
-        [Route("Cadastro")]
-        [Route("Cadastro/{id}")]
-        public IActionResult Cadastro(PlanoContaModel model)
+        [Route("Register")]
+        [Route("Register/{id}")]
+        public IActionResult Register(AccountPlanModel model)
         {
             _service.Save(model);
             return RedirectToAction("Index");
-        }        
+        }
 
-        [HttpPost]        
-        [Route("Excluir/{id}")]
+        [HttpGet]
+        [Route("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             _service.Delete(id);
