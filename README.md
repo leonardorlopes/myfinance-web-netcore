@@ -55,20 +55,20 @@ Para executar o projeto:
 
 Nessa tela conseguimos criar, alterar, deletar e visualizar os planos de contas, informando uma descrição e o tipo (Receita ou Despesa):
 
-<img src="myfinance-web-netcore\docs\PC_Index.png" alt="Plano de Conta">
+<img src="myfinance-web-netcore\docs\PlanoConta.png" alt="Plano de Conta">
 
 - Tela de Transações
 
 Nessa tela conseguimos criar, alterar, deletar e visualizar transações financeiras, informando a data, valor, histórico e selecionando qual o plano de conta relacionado a transação, além de podermos navegar para a tela de relatório:
 
-<img src="myfinance-web-netcore\docs\T_Index.png" alt="Transacao">
+<img src="myfinance-web-netcore\docs\Transacoes.png" alt="Transacao">
 
 - Tela de Relatório
 
 Nessa tela conseguimos gerar um relatório por período, selecionando o intervalo de datas que desejamos pesquisar e clicando em filtrar:
 
-<img src="myfinance-web-netcore\docs\R_Index.png" alt="Relatorio">
+<img src="myfinance-web-netcore\docs\Reports.png" alt="Relatorio">
 
 Com o relatório gerado conseguimos em sequência gerar um gráfico clicando em "Gerar Gráfico" comparando as receitas e despesas do período:
 
-<img src="myfinance-web-netcore\docs\R_Grafico.png" alt="Grafico">
+<img src="myfinance-web-netcore\docs\ReportsChart.png" alt="Grafico">
